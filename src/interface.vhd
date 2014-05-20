@@ -91,6 +91,6 @@ architecture Behavioral of interface is
 	begin
 		tmp <= (D and MASK.Q)
 		INTR port map(CLK,tmp,RS);
-	end Behavioral;
+end Behavioral;
 
 
