@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "F:/jizu/interrupt/queue_tb_isim_beh.exe" -prj "F:/jizu/interrupt/queue_tb_beh.prj" "work.queue_tb" 
+-intstyle "ise" -incremental -lib "secureip" -o "F:/jizu/interrupt/interrupt_tb_isim_beh.exe" -prj "F:/jizu/interrupt/interrupt_tb_beh.prj" "work.interrupt_tb" 

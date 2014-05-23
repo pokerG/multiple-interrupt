@@ -1,2 +1,8 @@
+work	"DFlip.vhd"
 work	"coreInQueue.vhd"
+work	"deviceEncode.vhd"
+work	"interface.vhd"
+work	"interrupt.vhd"
+work	"ntristate.vhd"
 work	"queue.vhd"
+work	"tristate.vhd"

@@ -1,3 +1,0 @@
-vhdl work "coreInQueue.vhd"
-vhdl work "queue.vhd"
-vhdl work "queue_tb.vhd"

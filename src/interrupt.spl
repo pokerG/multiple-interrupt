@@ -1,0 +1,8 @@
+[Inputs]
+INTA
+CLK
+=D[1:4]=
+[Outputs]
+INTR
+=Encode[0:7]=
+[BiDir]

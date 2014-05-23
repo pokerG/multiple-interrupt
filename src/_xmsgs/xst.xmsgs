@@ -8,5 +8,22 @@
 <msg type="info" file="Xst" num="0" delta="new" >Part-select index evaluated to out of bound value may lead to incorrect synthesis results; it is recommended not to use them in RTL
 </msg>
 
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">f:/jizu/interrupt/queue.vhd</arg>&quot; line <arg fmt="%s" index="2">52</arg>: Output port &lt;<arg fmt="%s" index="3">floor</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">c4</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="warning" file="Xst" num="1989" delta="old" >Unit &lt;<arg fmt="%s" index="1">deviceEncode</arg>&gt;: instances &lt;<arg fmt="%s" index="2">d10</arg>&gt;, &lt;<arg fmt="%s" index="3">d11</arg>&gt; of unit &lt;<arg fmt="%s" index="4">ntristate</arg>&gt; are equivalent, second instance is removed
+</msg>
+
+<msg type="warning" file="Xst" num="1989" delta="old" >Unit &lt;<arg fmt="%s" index="1">deviceEncode</arg>&gt;: instances &lt;<arg fmt="%s" index="2">d40</arg>&gt;, &lt;<arg fmt="%s" index="3">d41</arg>&gt; of unit &lt;<arg fmt="%s" index="4">tristate</arg>&gt; are equivalent, second instance is removed
+</msg>
+
+<msg type="warning" file="Xst" num="2973" delta="old" >All outputs of instance &lt;<arg fmt="%s" index="1">d21</arg>&gt; of block &lt;<arg fmt="%s" index="2">tristate</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="3">deviceEncode</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2973" delta="old" >All outputs of instance &lt;<arg fmt="%s" index="1">d31</arg>&gt; of block &lt;<arg fmt="%s" index="2">ntristate</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="3">deviceEncode</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2039" delta="old" >Unit <arg fmt="%s" index="1">interrupt</arg>: <arg fmt="%d" index="2">1</arg> multi-source signal is replaced by logic (pull-up <arg fmt="%s" index="3">yes</arg>): </msg>
+
 </messages>
 
