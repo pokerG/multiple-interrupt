@@ -1,0 +1,32 @@
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -prj interrupt -o F:/jizu/interrupt/queue.vhi -module queue -template I:/ise/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work queue.vhd 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 
+vhdtdtfi -prj interrupt -o F:/jizu/interrupt/queue.vhi -module queue -template I:/ise/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work queue.vhd 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 
+vhdtdtfi -prj interrupt -o F:/jizu/interrupt/queue.vhi -module queue -template I:/ise/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work queue.vhd 
+vhdtdtfi -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 
+vhdtdtfi -lib work coreInQueue.vhd -lib work queue.vhd -prj interrupt -o queue.spl -module queue -template I:/ise/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 queue.spl F:/jizu/interrupt/queue.sym 

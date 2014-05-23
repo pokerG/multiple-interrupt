@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:01:20 05/21/2014 
+-- Create Date:    20:19:25 05/22/2014 
 -- Design Name: 
--- Module Name:    interface - Behavioral 
+-- Module Name:    coreInQueue - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -31,18 +31,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 
-entity interface is		--中断接口电路
-	Port(CLK,D:in STD_LOGIC; --输入： 中断查询信号 完成触发器信号
-			RS:OUT STD_LOGIC); --输出： 中断请求信号（取反进入排队器）
-end interface;
+entity coreInQueue is		--排队器的核心组件
+	port(pre,intr:in STD_LOGIC;	--输入：上一级排队器信号，中断信号
+	intp,floor:out STD_LOGIC); --输出：上级信号取反，传到下级的信号
+end coreInQueue;
 
-architecture Behavioral of interface is
-	component DFlip
-		port(CLK,D:in STD_LOGIC;
-				Q:out STD_LOGIC);
-	end component;
-	signal tmp: STD_LOGIC;
-	begin
-		tmp <= D;
-		intr: DFlip port map (CLK,tmp,RS);
-end Behavioral;
+architecture Behavioral of coreInQueue is
+	signal tmp : STD_LOGIC;
+begin
+	tmp <= not(pre) after 5 ns;
+	intp <= tmp;
+	floor <= not(tmp and intr) after 5 ns;
+end Behavioral;	

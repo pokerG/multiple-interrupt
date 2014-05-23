@@ -1,0 +1,6 @@
+Release 13.4 ngdbuild O.87xd (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: I:\ise\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe -intstyle ise
+-dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 interface.ngc interface.ngd
+

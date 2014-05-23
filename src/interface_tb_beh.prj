@@ -1,0 +1,3 @@
+vhdl work "DFlip.vhd"
+vhdl work "interface.vhd"
+vhdl work "interface_tb.vhd"

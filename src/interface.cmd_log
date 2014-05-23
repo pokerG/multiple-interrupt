@@ -1,0 +1,24 @@
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 interface.ngc interface.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o interface_map.ncd interface.ngd interface.pcf 
+par -w -intstyle ise -ol high -mt off interface_map.ncd interface.ncd interface.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml interface.twx interface.ncd -o interface.twr interface.pcf 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 interface.ngc interface.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o interface_map.ncd interface.ngd interface.pcf 
+par -w -intstyle ise -ol high -mt off interface_map.ncd interface.ncd interface.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml interface.twx interface.ncd -o interface.twr interface.pcf 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+xst -intstyle ise -ifn "F:/jizu/interrupt/interface.xst" -ofn "F:/jizu/interrupt/interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 interface.ngc interface.ngd  

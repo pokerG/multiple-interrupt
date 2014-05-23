@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    22:15:46 05/19/2014 
+-- Create Date:    16:56:45 05/21/2014 
 -- Design Name: 
--- Module Name:    interrupt - Behavioral 
+-- Module Name:    DFlip - ffq 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+entity DFlip is		--D´¥·¢Æ÷
+	port(CLK,D:in STD_LOGIC;
+			Q:out STD_LOGIC);
+end DFlip;
 
-entity DFilp is
-	port(CLK,D:in STD_LOGIC£»
-			Q:OUT STD_LOGIC);
-end DFilp;
-
-architecture FFQ of DFilp is
+architecture ffq of DFlip is
 	signal Q1:STD_LOGIC;
 begin
 	process(CLK,Q1)
@@ -45,16 +44,5 @@ begin
 			end if;
 		end process;
 	Q <= Q1;
-end FFQ;
-
-
-entity interrupt is
-end interrupt;
-
-architecture Behavioral of interrupt is
-
-begin
-
-
-end Behavioral;
+end ffq;
 
