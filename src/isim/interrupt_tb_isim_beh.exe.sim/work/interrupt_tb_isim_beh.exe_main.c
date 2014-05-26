@@ -30,6 +30,7 @@ int main(int argc, char **argv)
     ieee_p_3499444699_init();
     ieee_p_3620187407_init();
     work_a_1000525573_1522107456_init();
+    work_a_0332494518_3212880686_init();
     work_a_1303685318_3212880686_init();
     work_a_3880293997_3212880686_init();
     work_a_1233435933_3212880686_init();

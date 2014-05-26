@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   15:28:49 05/23/2014
+-- Create Date:   16:44:28 05/23/2014
 -- Design Name:   
 -- Module Name:   F:/jizu/interrupt/interrupt_tb.vhd
 -- Project Name:  interrupt
@@ -44,6 +44,7 @@ ARCHITECTURE behavior OF interrupt_tb IS
          INTA : IN  std_logic;
          CLK : IN  std_logic;
          D : IN  std_logic_vector(1 to 4);
+         M : IN  std_logic_vector(1 to 4);
          INTR : OUT  std_logic;
          Encode : OUT  std_logic_vector(0 to 1)
         );
@@ -51,9 +52,10 @@ ARCHITECTURE behavior OF interrupt_tb IS
     
 
    --Inputs
-   signal INTA : std_logic := '0';
+   signal INTA : std_logic := '1';
    signal CLK : std_logic := '0';
-   signal D : std_logic_vector(1 to 4) := (others => '0');
+   signal D : std_logic_vector(1 to 4) := "1111";
+   signal M : std_logic_vector(1 to 4) := "0000";
 
  	--Outputs
    signal INTR : std_logic;
@@ -61,18 +63,26 @@ ARCHITECTURE behavior OF interrupt_tb IS
 
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
- 
+	signal init : std_logic;
+	signal tmpm : std_logic_vector(1 to 4);
+	--signal tmpd : std_logic_vector(1 to 4);
+	--signal tmp2 : std_logic_vector(0 to 1);
+	signal tmp3 : std_logic:='0';
+	signal tmp4 : std_logic:='0';
+ 	--signal dp : std_logic_vector(1 to 4);
 BEGIN
- 
+
+
 	-- Instantiate the Unit Under Test (UUT)
    uut: interrupt PORT MAP (
           INTA => INTA,
           CLK => CLK,
           D => D,
+          M => M,
           INTR => INTR,
           Encode => Encode
         );
-
+ 
    -- Clock process definitions
    CLK_process :process
    begin
@@ -82,37 +92,41 @@ BEGIN
 		wait for CLK_period/2;
    end process;
  
-
-	
-   -- Stimulus process
-   stim_proc: process
-   begin		
-      -- hold reset state for 100 ns.
+	process
+	begin
+		wait for 5 ns;
+		tmp4 <= '0';
+		--wait until INTR = '1';
+		if INTR = '1' then
+		INTA <= '0';
+		tmpm <= M; --±£´æÆÁ±Î×Ö
+		case Encode is
+			when "00" =>
+				D <= D and "0111" after 5 ns;
+				M <= "1111" after 5 ns;
+			when "01" =>
+				D <= D and "1011" after 5 ns;
+				M <= "0100" after 5 ns;
+			when "10" =>
+				D <= D and "1101" after 5 ns;
+				M <= "0110" after 5 ns;
+			when "11" =>
+				D <= D and "1110" after 5 ns;
+				M <= "0111" after 5 ns;
+			when others =>
+				tmp3 <= '1' after 5 ns;
+		end case;
 		INTA <= '1';
-      wait for 100 ns;	
-
-      D <= "0111";
-		wait for 100 ns;
-		D <= "1011";
-		wait for 100 ns;
-		D <= "0101";
-		wait for 100 ns;
-		D <= "0110";
-		wait for 100 ns;
-		D <= "1010";
-		wait for 100 ns;
-		D <= "0010";
-		wait for 100 ns;
-		D <= "0100";
-		wait for 100 ns;
-		D <= "1001";
-		wait for 100 ns;
-		D <= "1100";
-		wait for 100 ns;
-		D <= "0101";
-		wait;
-
-      -- insert stimulus here 
-   end process;
-
+		wait for 100 ns; --ÖÐ¶Ï·þÎñ
+		INTA <= '0';
+		M <= tmpm after 10 ns;	--»Ö¸´ÆÁ±Î×Ö
+		INTA <= '1';
+		tmp3 <= '0' after 10 ns;
+		end if;
+		tmp4 <= '1';
+	end process;
+   -- Stimulus process
+	
+	 
+		
 END;

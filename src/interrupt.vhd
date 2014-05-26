@@ -33,6 +33,7 @@ entity interrupt is
 	port(INTA : in std_logic;		--中断响应信号
 			CLK: in std_logic;		--中断查询
 			D:in std_logic_vector(1 to 4);	--中断源
+			M:in std_logic_vector(1 to 4); --屏蔽字
 			INTR: out std_logic; --中断请求信号
 			Encode:out std_logic_vector(0 to 1));	--向量地址
 end interrupt;
@@ -54,15 +55,28 @@ architecture Behavioral of interrupt is
 			databus: out std_logic_vector(0 to 1));
 	end component deviceEncode;
 	
+	component MASK
+		port(CLK:in std_logic;
+				Min:in std_logic;
+				Moutn: out std_logic);
+	end component MASK;
+	
 	signal tr : std_logic_vector(1 to 4); --interface输出
 	signal ntr : std_logic_vector(1 to 4);
 	signal tp : std_logic_vector(1 to 4); --queue输出
+	signal mon: std_logic_vector(1 to 4); --MASK ~输出
+	signal input:std_logic_vector(1 to 4):="1111"; --interface输入
 begin
-	i1: interface port map (CLK,D(1),tr(1));
-	i2: interface port map (CLK,D(2),tr(2));
-	i3: interface port map (CLK,D(3),tr(3));
-	i4: interface port map (CLK,D(4),tr(4));
-	INTR <= tr(1) and tr(2) and tr(3) and tr(4);
+	m1: MASK port map (CLK,M(1),mon(1));
+	m2: MASK port map (CLK,M(2),mon(2));
+	m3: MASK port map (CLK,M(3),mon(3));
+	m4: MASK port map (CLK,M(4),mon(4));
+	input <= mon and D;
+	i1: interface port map (CLK,input(1),tr(1));
+	i2: interface port map (CLK,input(2),tr(2));
+	i3: interface port map (CLK,input(3),tr(3));
+	i4: interface port map (CLK,input(4),tr(4));
+	INTR <= tr(1) or tr(2) or tr(3) or tr(4);
 	ntr <= not tr;
 
 	q: queue port map (ntr,tp);

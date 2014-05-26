@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.39 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.40 secs
  
 --> Reading design: interrupt.prj
 
@@ -121,6 +121,9 @@ Parsing architecture <Behavioral> of entity <coreinqueue>.
 Parsing VHDL file "F:\jizu\interrupt\queue.vhd" into library work
 Parsing entity <queue>.
 Parsing architecture <Behavioral> of entity <queue>.
+Parsing VHDL file "F:\jizu\interrupt\MASK.vhd" into library work
+Parsing entity <MASK>.
+Parsing architecture <Behavioral> of entity <mask>.
 Parsing VHDL file "F:\jizu\interrupt\interface.vhd" into library work
 Parsing entity <interface>.
 Parsing architecture <Behavioral> of entity <interface>.
@@ -137,9 +140,11 @@ Parsing architecture <Behavioral> of entity <interrupt>.
 
 Elaborating entity <interrupt> (architecture <Behavioral>) from library <work>.
 
-Elaborating entity <interface> (architecture <Behavioral>) from library <work>.
+Elaborating entity <MASK> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <DFlip> (architecture <ffq>) from library <work>.
+
+Elaborating entity <interface> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <queue> (architecture <Behavioral>) from library <work>.
 
@@ -161,11 +166,11 @@ Synthesizing Unit <interrupt>.
 	no macro.
 Unit <interrupt> synthesized.
 
-Synthesizing Unit <interface>.
-    Related source file is "f:/jizu/interrupt/interface.vhd".
+Synthesizing Unit <MASK>.
+    Related source file is "f:/jizu/interrupt/mask.vhd".
     Summary:
 	no macro.
-Unit <interface> synthesized.
+Unit <MASK> synthesized.
 
 Synthesizing Unit <DFlip>.
     Related source file is "f:/jizu/interrupt/dflip.vhd".
@@ -173,6 +178,12 @@ Synthesizing Unit <DFlip>.
     Summary:
 	inferred   1 D-type flip-flop(s).
 Unit <DFlip> synthesized.
+
+Synthesizing Unit <interface>.
+    Related source file is "f:/jizu/interrupt/interface.vhd".
+    Summary:
+	no macro.
+Unit <interface> synthesized.
 
 Synthesizing Unit <queue>.
     Related source file is "f:/jizu/interrupt/queue.vhd".
@@ -211,8 +222,8 @@ Unit <tristate> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 4
- 1-bit register                                        : 4
+# Registers                                            : 8
+ 1-bit register                                        : 8
 # Tristates                                            : 8
  1-bit tristate buffer                                 : 8
 
@@ -227,8 +238,8 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 4
- Flip-Flops                                            : 4
+# Registers                                            : 8
+ Flip-Flops                                            : 8
 
 =========================================================================
 
@@ -253,8 +264,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 4
- Flip-Flops                                            : 4
+# Registers                                            : 8
+ Flip-Flops                                            : 8
 
 =========================================================================
 
@@ -277,16 +288,17 @@ Top Level Output File Name         : interrupt.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 3
+# BELS                             : 7
+#      LUT2                        : 4
 #      LUT3                        : 1
 #      LUT4                        : 1
 #      LUT5                        : 1
-# FlipFlops/Latches                : 4
-#      FD                          : 4
+# FlipFlops/Latches                : 8
+#      FD                          : 8
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 8
-#      IBUF                        : 5
+# IO Buffers                       : 12
+#      IBUF                        : 9
 #      OBUF                        : 1
 #      OBUFT                       : 2
 
@@ -297,20 +309,20 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice LUTs:                    3  out of   9112     0%  
-    Number used as Logic:                 3  out of   9112     0%  
+ Number of Slice Registers:               8  out of  18224     0%  
+ Number of Slice LUTs:                    7  out of   9112     0%  
+    Number used as Logic:                 7  out of   9112     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:      3
-   Number with an unused Flip Flop:       3  out of      3   100%  
-   Number with an unused LUT:             0  out of      3     0%  
-   Number of fully used LUT-FF pairs:     0  out of      3     0%  
+ Number of LUT Flip Flop pairs used:     15
+   Number with an unused Flip Flop:       7  out of     15    46%  
+   Number with an unused LUT:             8  out of     15    53%  
+   Number of fully used LUT-FF pairs:     0  out of     15     0%  
    Number of unique control sets:         1
 
 IO Utilization: 
- Number of IOs:                           9
- Number of bonded IOBs:                   9  out of    232     3%  
-    IOB Flip Flops/Latches:               4
+ Number of IOs:                          13
+ Number of bonded IOBs:                  13  out of    232     5%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
@@ -336,7 +348,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-CLK                                | BUFGP                  | 4     |
+CLK                                | BUFGP                  | 8     |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -347,8 +359,8 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: No path found
-   Minimum input arrival time before clock: 1.903ns
+   Minimum period: 1.334ns (Maximum Frequency: 749.709MHz)
+   Minimum input arrival time before clock: 2.211ns
    Maximum output required time after clock: 4.719ns
    Maximum combinational path delay: 5.574ns
 
@@ -357,23 +369,46 @@ Timing Details:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 1.334ns (frequency: 749.709MHz)
   Total number of paths / destination ports: 4 / 4
 -------------------------------------------------------------------------
-Offset:              1.903ns (Levels of Logic = 1)
-  Source:            D<1> (PAD)
-  Destination:       i1/intr/Q1 (FF)
+Delay:               1.334ns (Levels of Logic = 1)
+  Source:            m4/d/Q1 (FF)
+  Destination:       i4/intr/Q1 (FF)
+  Source Clock:      CLK rising
   Destination Clock: CLK rising
 
-  Data Path: D<1> to i1/intr/Q1
+  Data Path: m4/d/Q1 to i4/intr/Q1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   1.222   0.579  D_1_IBUF (D_1_IBUF)
-     FD:D                      0.102          i1/intr/Q1
+     FD:C->Q               1   0.447   0.580  m4/d/Q1 (m4/d/Q1)
+     LUT2:I1->O            1   0.205   0.000  input<0>1 (input<4>)
+     FD:D                      0.102          i4/intr/Q1
     ----------------------------------------
-    Total                      1.903ns (1.324ns logic, 0.579ns route)
-                                       (69.6% logic, 30.4% route)
+    Total                      1.334ns (0.754ns logic, 0.580ns route)
+                                       (56.5% logic, 43.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              2.211ns (Levels of Logic = 2)
+  Source:            D<4> (PAD)
+  Destination:       i4/intr/Q1 (FF)
+  Destination Clock: CLK rising
+
+  Data Path: D<4> to i4/intr/Q1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.222   0.684  D_4_IBUF (D_4_IBUF)
+     LUT2:I0->O            1   0.203   0.000  input<0>1 (input<4>)
+     FD:D                      0.102          i4/intr/Q1
+    ----------------------------------------
+    Total                      2.211ns (1.527ns logic, 0.684ns route)
+                                       (69.1% logic, 30.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
@@ -419,15 +454,23 @@ Delay:               5.574ns (Levels of Logic = 3)
 Cross Clock Domains Report:
 --------------------------
 
+Clock to Setup on destination clock CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK            |    1.334|         |         |         |
+---------------+---------+---------+---------+---------+
+
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.72 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.19 secs
  
 --> 
 
-Total memory usage is 251060 kilobytes
+Total memory usage is 251252 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    5 (   0 filtered)

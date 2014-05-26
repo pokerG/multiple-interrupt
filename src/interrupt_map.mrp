@@ -10,29 +10,34 @@ Target Device  : xc6slx16
 Target Package : csg324
 Target Speed   : -3
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Fri May 23 15:49:43 2014
+Mapped Date    : Mon May 26 16:56:49 2014
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                     0 out of  18,224    0%
-  Number of Slice LUTs:                          2 out of   9,112    1%
-    Number used as logic:                        2 out of   9,112    1%
-      Number using O6 output only:               1
+  Number of Slice Registers:                     8 out of  18,224    1%
+    Number used as Flip Flops:                   8
+    Number used as Latches:                      0
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                          5 out of   9,112    1%
+    Number used as logic:                        5 out of   9,112    1%
+      Number using O6 output only:               3
       Number using O5 output only:               0
-      Number using O5 and O6:                    1
+      Number using O5 and O6:                    2
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   2,176    0%
 
 Slice Logic Distribution:
-  Number of occupied Slices:                     2 out of   2,278    1%
+  Number of occupied Slices:                     4 out of   2,278    1%
   Nummber of MUXCYs used:                        0 out of   4,556    0%
-  Number of LUT Flip Flop pairs used:            2
-    Number with an unused Flip Flop:             2 out of       2  100%
-    Number with an unused LUT:                   0 out of       2    0%
-    Number of fully used LUT-FF pairs:           0 out of       2    0%
+  Number of LUT Flip Flop pairs used:            6
+    Number with an unused Flip Flop:             1 out of       6   16%
+    Number with an unused LUT:                   1 out of       6   16%
+    Number of fully used LUT-FF pairs:           4 out of       6   66%
+    Number of unique control sets:               1
     Number of slice register sites lost
       to control set restrictions:               0 out of  18,224    0%
 
@@ -43,8 +48,7 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                         9 out of     232    3%
-    IOB Flip Flops:                              4
+  Number of bonded IOBs:                        13 out of     232    5%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -55,9 +59,7 @@ Specific Feature Utilization:
     Number used as BUFGs:                        1
     Number used as BUFGMUX:                      0
   Number of DCM/DCM_CLKGENs:                     0 out of       4    0%
-  Number of ILOGIC2/ISERDES2s:                   4 out of     248    1%
-    Number used as ILOGIC2s:                     4
-    Number used as ISERDES2s:                    0
+  Number of ILOGIC2/ISERDES2s:                   0 out of     248    0%
   Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     248    0%
   Number of OLOGIC2/OSERDES2s:                   0 out of     248    0%
   Number of BSCANs:                              0 out of       4    0%
@@ -73,11 +75,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                1.38
+Average Fanout of Non-Clock Nets:                1.24
 
-Peak Memory Usage:  338 MB
-Total REAL time to MAP completion:  5 secs 
-Total CPU time to MAP completion:   5 secs 
+Peak Memory Usage:  340 MB
+Total REAL time to MAP completion:  14 secs 
+Total CPU time to MAP completion:   7 secs 
 
 Table of Contents
 -----------------
@@ -129,14 +131,18 @@ Section 6 - IOB Properties
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | CLK                                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| D<1>                               | IOB              | INPUT     | LVCMOS25             |       |          |      | IFF          |          |          |
-| D<2>                               | IOB              | INPUT     | LVCMOS25             |       |          |      | IFF          |          |          |
-| D<3>                               | IOB              | INPUT     | LVCMOS25             |       |          |      | IFF          |          |          |
-| D<4>                               | IOB              | INPUT     | LVCMOS25             |       |          |      | IFF          |          |          |
+| D<1>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| D<2>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| D<3>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| D<4>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | Encode<0>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Encode<1>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | INTA                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | INTR                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| M<1>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| M<2>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| M<3>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| M<4>                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs

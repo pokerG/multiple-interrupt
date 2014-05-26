@@ -1,4 +1,5 @@
 work	"DFlip.vhd"
+work	"MASK.vhd"
 work	"coreInQueue.vhd"
 work	"deviceEncode.vhd"
 work	"interface.vhd"

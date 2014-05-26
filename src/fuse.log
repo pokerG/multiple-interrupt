@@ -8,10 +8,10 @@ Parsing VHDL file "F:/jizu/interrupt/ntristate.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/DFlip.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/coreInQueue.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/queue.vhd" into library work
+Parsing VHDL file "F:/jizu/interrupt/MASK.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/interface.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/deviceEncode.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/interrupt.vhd" into library work
-WARNING:HDLCompiler:946 - "F:/jizu/interrupt/interrupt.vhd" Line 65: Actual for formal port nintr is neither a static name nor a globally static expression
 Parsing VHDL file "F:/jizu/interrupt/interrupt_tb.vhd" into library work
 Starting static elaboration
 Completed static elaboration
@@ -20,6 +20,7 @@ Compiling package std_logic_1164
 Compiling package std_logic_arith
 Compiling package std_logic_unsigned
 Compiling architecture ffq of entity DFlip [dflip_default]
+Compiling architecture behavioral of entity MASK [mask_default]
 Compiling architecture behavioral of entity interface [interface_default]
 Compiling architecture behavioral of entity coreInQueue [coreinqueue_default]
 Compiling architecture behavioral of entity queue [queue_default]
@@ -29,8 +30,8 @@ Compiling architecture behavioral of entity deviceEncode [deviceencode_default]
 Compiling architecture behavioral of entity interrupt [interrupt_default]
 Compiling architecture behavior of entity interrupt_tb
 Time Resolution for simulation is 1ps.
-Waiting for 5 sub-compilation(s) to finish...
-Compiled 21 VHDL Units
+Waiting for 6 sub-compilation(s) to finish...
+Compiled 23 VHDL Units
 Built simulation executable F:/jizu/interrupt/interrupt_tb_isim_beh.exe
-Fuse Memory Usage: 32844 KB
-Fuse CPU Usage: 654 ms
+Fuse Memory Usage: 32880 KB
+Fuse CPU Usage: 670 ms
