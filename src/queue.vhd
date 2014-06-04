@@ -50,7 +50,7 @@ begin
 	c2: coreInQueue port map (ceil(1),NINTR(2),intp1(2),ceil(2));
 	c3: coreInQueue port map (ceil(2),NINTR(3),intp1(3),ceil(3));
 	c4: coreInQueue port map (ceil(3),NINTR(4),intp1(4),ceil(4));
-	INTP <= intp1 and (not NINTR) after 5 ns;
+	INTP <= not(intp1 nand (not NINTR)) after 5 ns;
 	
 end Behavioral;
 

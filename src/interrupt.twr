@@ -38,12 +38,12 @@ Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(
 ------------+------------+------------+------------+------------+------------------+--------+
 D<1>        |    0.785(R)|      FAST  |   -0.080(R)|      SLOW  |CLK_BUFGP         |   0.000|
 D<2>        |    0.563(R)|      FAST  |    0.241(R)|      SLOW  |CLK_BUFGP         |   0.000|
-D<3>        |    0.767(R)|      FAST  |   -0.026(R)|      SLOW  |CLK_BUFGP         |   0.000|
-D<4>        |    0.828(R)|      FAST  |   -0.128(R)|      SLOW  |CLK_BUFGP         |   0.000|
+D<3>        |    0.672(R)|      FAST  |    0.042(R)|      SLOW  |CLK_BUFGP         |   0.000|
+D<4>        |    0.673(R)|      FAST  |    0.024(R)|      SLOW  |CLK_BUFGP         |   0.000|
 M<1>        |    0.610(R)|      FAST  |    0.144(R)|      SLOW  |CLK_BUFGP         |   0.000|
 M<2>        |    0.751(R)|      FAST  |    0.013(R)|      SLOW  |CLK_BUFGP         |   0.000|
-M<3>        |    0.593(R)|      FAST  |    0.036(R)|      SLOW  |CLK_BUFGP         |   0.000|
-M<4>        |    0.520(R)|      FAST  |    0.218(R)|      SLOW  |CLK_BUFGP         |   0.000|
+M<3>        |    0.594(R)|      FAST  |    0.087(R)|      SLOW  |CLK_BUFGP         |   0.000|
+M<4>        |    0.448(R)|      FAST  |    0.337(R)|      SLOW  |CLK_BUFGP         |   0.000|
 ------------+------------+------------+------------+------------+------------------+--------+
 
 Clock CLK to Pad
@@ -51,9 +51,18 @@ Clock CLK to Pad
             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
 Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
-Encode<0>   |         7.667(R)|      SLOW  |         3.670(R)|      FAST  |CLK_BUFGP         |   0.000|
-Encode<1>   |         7.873(R)|      SLOW  |         3.670(R)|      FAST  |CLK_BUFGP         |   0.000|
-INTR        |         7.453(R)|      SLOW  |         3.679(R)|      FAST  |CLK_BUFGP         |   0.000|
+Encode<0>   |         8.043(R)|      SLOW  |         3.765(R)|      FAST  |CLK_BUFGP         |   0.000|
+Encode<1>   |         7.800(R)|      SLOW  |         3.765(R)|      FAST  |CLK_BUFGP         |   0.000|
+INTR        |         7.571(R)|      SLOW  |         3.779(R)|      FAST  |CLK_BUFGP         |   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock OpInt to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+Encode<0>   |         8.869(F)|      SLOW  |         4.820(F)|      FAST  |eint/Q_G          |   0.000|
+Encode<1>   |         8.626(F)|      SLOW  |         4.820(F)|      FAST  |eint/Q_G          |   0.000|
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock CLK
@@ -64,16 +73,17 @@ Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 CLK            |    1.322|         |         |         |
 ---------------+---------+---------+---------+---------+
 
-Pad to Pad
----------------+---------------+---------+
-Source Pad     |Destination Pad|  Delay  |
----------------+---------------+---------+
-INTA           |Encode<0>      |    6.287|
-INTA           |Encode<1>      |    6.493|
----------------+---------------+---------+
+Clock to Setup on destination clock OpInt
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK            |         |         |    2.019|         |
+OpInt          |         |         |    0.717|    3.111|
+---------------+---------+---------+---------+---------+
 
 
-Analysis completed Mon May 26 16:57:20 2014 
+Analysis completed Wed Jun 04 10:17:29 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:

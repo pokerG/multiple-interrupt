@@ -41,5 +41,5 @@ architecture Behavioral of coreInQueue is
 begin
 	tmp <= not(pre) after 5 ns;
 	intp <= tmp;
-	floor <= not(tmp and intr) after 5 ns;
+	floor <= tmp nand intr after 5 ns;
 end Behavioral;	

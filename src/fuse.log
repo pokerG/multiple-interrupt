@@ -7,11 +7,14 @@ Parsing VHDL file "F:/jizu/interrupt/tristate.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/ntristate.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/DFlip.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/coreInQueue.vhd" into library work
+Parsing VHDL file "F:/jizu/interrupt/SRlatch.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/queue.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/MASK.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/interface.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/deviceEncode.vhd" into library work
 Parsing VHDL file "F:/jizu/interrupt/interrupt.vhd" into library work
+WARNING:HDLCompiler:946 - "F:/jizu/interrupt/interrupt.vhd" Line 97: Actual for formal port s is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "F:/jizu/interrupt/interrupt.vhd" Line 98: Actual for formal port r is neither a static name nor a globally static expression
 Parsing VHDL file "F:/jizu/interrupt/interrupt_tb.vhd" into library work
 Starting static elaboration
 Completed static elaboration
@@ -27,11 +30,12 @@ Compiling architecture behavioral of entity queue [queue_default]
 Compiling architecture behavioral of entity ntristate [ntristate_default]
 Compiling architecture behavioral of entity tristate [tristate_default]
 Compiling architecture behavioral of entity deviceEncode [deviceencode_default]
+Compiling architecture behavioral of entity SRlatch [srlatch_default]
 Compiling architecture behavioral of entity interrupt [interrupt_default]
 Compiling architecture behavior of entity interrupt_tb
 Time Resolution for simulation is 1ps.
-Waiting for 6 sub-compilation(s) to finish...
-Compiled 23 VHDL Units
+Waiting for 7 sub-compilation(s) to finish...
+Compiled 25 VHDL Units
 Built simulation executable F:/jizu/interrupt/interrupt_tb_isim_beh.exe
-Fuse Memory Usage: 32880 KB
-Fuse CPU Usage: 670 ms
+Fuse Memory Usage: 33188 KB
+Fuse CPU Usage: 639 ms

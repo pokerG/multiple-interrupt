@@ -25,67 +25,70 @@ static const char *ng0 = "F:/jizu/interrupt/queue.vhd";
 extern char *IEEE_P_2592010699;
 
 char *ieee_p_2592010699_sub_1837678034_503743352(char *, char *, char *, char *);
-char *ieee_p_2592010699_sub_795620321_503743352(char *, char *, char *, char *, char *, char *);
+char *ieee_p_2592010699_sub_3798478767_503743352(char *, char *, char *, char *, char *, char *);
 
 
 static void work_a_1233435933_3212880686_p_0(char *t0)
 {
     char t2[16];
-    char t5[16];
+    char t3[16];
+    char t6[16];
     int64 t1;
-    char *t3;
     char *t4;
-    char *t6;
+    char *t5;
     char *t7;
     char *t8;
     char *t9;
     char *t10;
-    unsigned int t11;
-    unsigned int t12;
-    unsigned char t13;
-    char *t14;
-    char *t15;
+    char *t11;
+    char *t12;
+    unsigned int t13;
+    unsigned int t14;
+    unsigned char t15;
     char *t16;
     char *t17;
     char *t18;
     char *t19;
     char *t20;
+    char *t21;
+    char *t22;
 
 LAB0:    xsi_set_current_line(53, ng0);
 
 LAB3:    t1 = (5 * 1000LL);
-    t3 = (t0 + 1352U);
-    t4 = *((char **)t3);
-    t3 = (t0 + 5372U);
-    t6 = (t0 + 1032U);
-    t7 = *((char **)t6);
-    t6 = (t0 + 5340U);
-    t8 = ieee_p_2592010699_sub_1837678034_503743352(IEEE_P_2592010699, t5, t7, t6);
-    t9 = ieee_p_2592010699_sub_795620321_503743352(IEEE_P_2592010699, t2, t4, t3, t8, t5);
-    t10 = (t2 + 12U);
-    t11 = *((unsigned int *)t10);
-    t12 = (1U * t11);
-    t13 = (4U != t12);
-    if (t13 == 1)
+    t4 = (t0 + 1352U);
+    t5 = *((char **)t4);
+    t4 = (t0 + 5372U);
+    t7 = (t0 + 1032U);
+    t8 = *((char **)t7);
+    t7 = (t0 + 5340U);
+    t9 = ieee_p_2592010699_sub_1837678034_503743352(IEEE_P_2592010699, t6, t8, t7);
+    t10 = ieee_p_2592010699_sub_3798478767_503743352(IEEE_P_2592010699, t3, t5, t4, t9, t6);
+    t11 = ieee_p_2592010699_sub_1837678034_503743352(IEEE_P_2592010699, t2, t10, t3);
+    t12 = (t2 + 12U);
+    t13 = *((unsigned int *)t12);
+    t14 = (1U * t13);
+    t15 = (4U != t14);
+    if (t15 == 1)
         goto LAB5;
 
-LAB6:    t14 = (t0 + 3352);
-    t15 = (t14 + 56U);
-    t16 = *((char **)t15);
+LAB6:    t16 = (t0 + 3352);
     t17 = (t16 + 56U);
     t18 = *((char **)t17);
-    memcpy(t18, t9, 4U);
-    xsi_driver_first_trans_delta(t14, 0U, 4U, t1);
-    t19 = (t0 + 3352);
-    xsi_driver_intertial_reject(t19, t1, t1);
+    t19 = (t18 + 56U);
+    t20 = *((char **)t19);
+    memcpy(t20, t11, 4U);
+    xsi_driver_first_trans_delta(t16, 0U, 4U, t1);
+    t21 = (t0 + 3352);
+    xsi_driver_intertial_reject(t21, t1, t1);
 
-LAB2:    t20 = (t0 + 3272);
-    *((int *)t20) = 1;
+LAB2:    t22 = (t0 + 3272);
+    *((int *)t22) = 1;
 
 LAB1:    return;
 LAB4:    goto LAB2;
 
-LAB5:    xsi_size_not_matching(4U, t12, 0);
+LAB5:    xsi_size_not_matching(4U, t14, 0);
     goto LAB6;
 
 }

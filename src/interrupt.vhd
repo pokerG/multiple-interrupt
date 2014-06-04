@@ -30,7 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity interrupt is
-	port(INTA : in std_logic;		--中断响应信号
+	port(OpInt : in std_logic;		--开中断 0 为有效值
 			CLK: in std_logic;		--中断查询
 			D:in std_logic_vector(1 to 4);	--中断源
 			M:in std_logic_vector(1 to 4); --屏蔽字
@@ -61,11 +61,21 @@ architecture Behavioral of interrupt is
 				Moutn: out std_logic);
 	end component MASK;
 	
+	component SRlatch
+		port(S:in std_logic;
+				R:in std_logic;
+				Q:out std_logic);
+	end component SRlatch;
+			
+	signal inta: std_logic :='1'; --中断响应信号
 	signal tr : std_logic_vector(1 to 4); --interface输出
 	signal ntr : std_logic_vector(1 to 4);
 	signal tp : std_logic_vector(1 to 4); --queue输出
 	signal mon: std_logic_vector(1 to 4); --MASK ~输出
 	signal input:std_logic_vector(1 to 4):="1111"; --interface输入
+	signal qor:std_logic:= '0'; --排队器结果或
+	signal ei:std_logic; --EINT输入
+	signal eq:std_logic:= '1'; --EINT输出
 begin
 	m1: MASK port map (CLK,M(1),mon(1));
 	m2: MASK port map (CLK,M(2),mon(2));
@@ -78,8 +88,14 @@ begin
 	i4: interface port map (CLK,input(4),tr(4));
 	INTR <= tr(1) or tr(2) or tr(3) or tr(4);
 	ntr <= not tr;
-
+	inta <= eq;
 	q: queue port map (ntr,tp);
-	e: deviceEncode port map(tp,INTA,Encode);
+	e: deviceEncode port map(tp,inta,Encode);
+	
+	--关中断
+	qor <= tp(1) or tp(2) or tp(3) or tp(4);
+	int: SRlatch port map(eq nand qor,OpInt,ei);
+	eint: SRlatch port map(OpInt,not ei,eq);
+	
 end Behavioral;
 

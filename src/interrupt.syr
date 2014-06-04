@@ -3,14 +3,14 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.39 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.40 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: interrupt.prj
 
@@ -118,6 +118,9 @@ Parsing architecture <ffq> of entity <dflip>.
 Parsing VHDL file "F:\jizu\interrupt\coreInQueue.vhd" into library work
 Parsing entity <coreInQueue>.
 Parsing architecture <Behavioral> of entity <coreinqueue>.
+Parsing VHDL file "F:\jizu\interrupt\SRlatch.vhd" into library work
+Parsing entity <SRlatch>.
+Parsing architecture <Behavioral> of entity <srlatch>.
 Parsing VHDL file "F:\jizu\interrupt\queue.vhd" into library work
 Parsing entity <queue>.
 Parsing architecture <Behavioral> of entity <queue>.
@@ -133,6 +136,8 @@ Parsing architecture <Behavioral> of entity <deviceencode>.
 Parsing VHDL file "F:\jizu\interrupt\interrupt.vhd" into library work
 Parsing entity <interrupt>.
 Parsing architecture <Behavioral> of entity <interrupt>.
+WARNING:HDLCompiler:946 - "F:\jizu\interrupt\interrupt.vhd" Line 97: Actual for formal port s is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "F:\jizu\interrupt\interrupt.vhd" Line 98: Actual for formal port r is neither a static name nor a globally static expression
 
 =========================================================================
 *                            HDL Elaboration                            *
@@ -155,6 +160,8 @@ Elaborating entity <deviceEncode> (architecture <Behavioral>) from library <work
 Elaborating entity <ntristate> (architecture <Behavioral>) from library <work>.
 
 Elaborating entity <tristate> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <SRlatch> (architecture <Behavioral>) from library <work>.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -218,12 +225,21 @@ Synthesizing Unit <tristate>.
 	inferred   1 Tristate(s).
 Unit <tristate> synthesized.
 
+Synthesizing Unit <SRlatch>.
+    Related source file is "f:/jizu/interrupt/srlatch.vhd".
+WARNING:Xst:737 - Found 1-bit latch for signal <Q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred   1 Latch(s).
+Unit <SRlatch> synthesized.
+
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
 # Registers                                            : 8
  1-bit register                                        : 8
+# Latches                                              : 2
+ 1-bit latch                                           : 2
 # Tristates                                            : 8
  1-bit tristate buffer                                 : 8
 
@@ -250,6 +266,32 @@ WARNING:Xst:1989 - Unit <deviceEncode>: instances <d10>, <d11> of unit <ntristat
 WARNING:Xst:1989 - Unit <deviceEncode>: instances <d40>, <d41> of unit <tristate> are equivalent, second instance is removed
 WARNING:Xst:2973 - All outputs of instance <d21> of block <tristate> are unconnected in block <deviceEncode>. Underlying logic will be removed.
 WARNING:Xst:2973 - All outputs of instance <d31> of block <ntristate> are unconnected in block <deviceEncode>. Underlying logic will be removed.
+WARNING:Xst:3002 - This design contains one or more registers/latches that are directly
+   incompatible with the Spartan6 architecture. The two primary causes of this is
+   either a register or latch described with both an asynchronous set and
+   asynchronous reset, or a register or latch described with an asynchronous
+   set or reset which however has an initialization value of the opposite 
+   polarity (i.e. asynchronous reset with an initialization value of 1).
+    While this circuit can be built, it creates a sub-optimal implementation
+   in terms of area, power and performance. For a more optimal implementation
+   Xilinx highly recommends one of the following:
+
+          1) Remove either the set or reset from all registers and latches
+             if not needed for required functionality
+          2) Modify the code in order to produce a synchronous set
+             and/or reset (both is preferred)
+          3) Ensure all registers have the same initialization value as the
+             described asynchronous set or reset polarity
+          4) Use the -async_to_sync option to transform the asynchronous
+             set/reset to synchronous operation
+             (timing simulation highly recommended when using this option)
+
+  Please refer to http://www.xilinx.com search string "Spartan6 asynchronous set/reset" for more details.
+
+  List of register instances with asynchronous set and reset:
+    int/Q in unit <interrupt>
+    eint/Q in unit <interrupt>
+
 WARNING:Xst:2039 - Unit interrupt: 1 multi-source signal is replaced by logic (pull-up yes): Encode<0>_MLTSRCEDGE.
 
 Optimizing unit <interrupt> ...
@@ -288,13 +330,16 @@ Top Level Output File Name         : interrupt.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 7
-#      LUT2                        : 4
-#      LUT3                        : 1
+# BELS                             : 14
+#      GND                         : 1
+#      LUT2                        : 6
+#      LUT3                        : 3
 #      LUT4                        : 1
 #      LUT5                        : 1
-# FlipFlops/Latches                : 8
+#      LUT6                        : 2
+# FlipFlops/Latches                : 10
 #      FD                          : 8
+#      LD                          : 2
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 12
@@ -309,16 +354,16 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:               8  out of  18224     0%  
- Number of Slice LUTs:                    7  out of   9112     0%  
-    Number used as Logic:                 7  out of   9112     0%  
+ Number of Slice Registers:              10  out of  18224     0%  
+ Number of Slice LUTs:                   13  out of   9112     0%  
+    Number used as Logic:                13  out of   9112     0%  
 
 Slice Logic Distribution: 
  Number of LUT Flip Flop pairs used:     15
-   Number with an unused Flip Flop:       7  out of     15    46%  
-   Number with an unused LUT:             8  out of     15    53%  
-   Number of fully used LUT-FF pairs:     0  out of     15     0%  
-   Number of unique control sets:         1
+   Number with an unused Flip Flop:       5  out of     15    33%  
+   Number with an unused LUT:             2  out of     15    13%  
+   Number of fully used LUT-FF pairs:     8  out of     15    53%  
+   Number of unique control sets:         3
 
 IO Utilization: 
  Number of IOs:                          13
@@ -349,7 +394,13 @@ Clock Information:
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
 CLK                                | BUFGP                  | 8     |
+eint/Q_G(eint/Q_G:O)               | NONE(*)(eint/Q)        | 1     |
+int/Q_G(int/Q_G:O)                 | NONE(*)(int/Q)         | 1     |
 -----------------------------------+------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -360,9 +411,9 @@ Timing Summary:
 Speed Grade: -3
 
    Minimum period: 1.334ns (Maximum Frequency: 749.709MHz)
-   Minimum input arrival time before clock: 2.211ns
-   Maximum output required time after clock: 4.719ns
-   Maximum combinational path delay: 5.574ns
+   Minimum input arrival time before clock: 3.560ns
+   Maximum output required time after clock: 4.865ns
+   Maximum combinational path delay: No path found
 
 Timing Details:
 ---------------
@@ -411,43 +462,85 @@ Offset:              2.211ns (Levels of Logic = 2)
                                        (69.1% logic, 30.9% route)
 
 =========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'eint/Q_G'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              2.250ns (Levels of Logic = 2)
+  Source:            OpInt (PAD)
+  Destination:       eint/Q (LATCH)
+  Destination Clock: eint/Q_G falling
+
+  Data Path: OpInt to eint/Q
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   1.222   0.788  OpInt_IBUF (OpInt_IBUF)
+     LUT2:I0->O            1   0.203   0.000  eint/Q_D (eint/Q_D)
+     LD:D                      0.037          eint/Q
+    ----------------------------------------
+    Total                      2.250ns (1.462ns logic, 0.788ns route)
+                                       (65.0% logic, 35.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'int/Q_G'
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Offset:              3.560ns (Levels of Logic = 3)
+  Source:            OpInt (PAD)
+  Destination:       int/Q (LATCH)
+  Destination Clock: int/Q_G falling
+
+  Data Path: OpInt to int/Q
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   1.222   1.048  OpInt_IBUF (OpInt_IBUF)
+     LUT6:I0->O            2   0.203   0.845  int/S_GND_17_o_AND_13_o1 (int/S_GND_17_o_AND_13_o)
+     LUT3:I0->O            1   0.205   0.000  int/Q_D (int/Q_D)
+     LD:D                      0.037          int/Q
+    ----------------------------------------
+    Total                      3.560ns (1.667ns logic, 1.893ns route)
+                                       (46.8% logic, 53.2% route)
+
+=========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
   Total number of paths / destination ports: 16 / 3
 -------------------------------------------------------------------------
-Offset:              4.719ns (Levels of Logic = 2)
-  Source:            i2/intr/Q1 (FF)
+Offset:              4.865ns (Levels of Logic = 2)
+  Source:            i4/intr/Q1 (FF)
   Destination:       Encode<0> (PAD)
   Source Clock:      CLK rising
 
-  Data Path: i2/intr/Q1 to Encode<0>
+  Data Path: i4/intr/Q1 to Encode<0>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.447   0.879  i2/intr/Q1 (i2/intr/Q1)
-     LUT3:I0->O            2   0.205   0.616  Encode<0>_MLTSRCEDGELogicTrst1 (Encode<0>_MLTSRCEDGE)
-     OBUFT:I->O                2.571          Encode_0_OBUFT (Encode<0>)
-    ----------------------------------------
-    Total                      4.719ns (3.223ns logic, 1.496ns route)
-                                       (68.3% logic, 31.7% route)
-
-=========================================================================
-Timing constraint: Default path analysis
-  Total number of paths / destination ports: 4 / 2
--------------------------------------------------------------------------
-Delay:               5.574ns (Levels of Logic = 3)
-  Source:            INTA (PAD)
-  Destination:       Encode<0> (PAD)
-
-  Data Path: INTA to Encode<0>
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O             2   1.222   0.961  INTA_IBUF (INTA_IBUF)
+     FD:C->Q               4   0.447   1.028  i4/intr/Q1 (i4/intr/Q1)
      LUT5:I0->O            2   0.203   0.616  Encode<0>Control1 (N2)
      OBUFT:T->O                2.571          Encode_0_OBUFT (Encode<0>)
     ----------------------------------------
-    Total                      5.574ns (3.996ns logic, 1.578ns route)
-                                       (71.7% logic, 28.3% route)
+    Total                      4.865ns (3.221ns logic, 1.644ns route)
+                                       (66.2% logic, 33.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'eint/Q_G'
+  Total number of paths / destination ports: 4 / 2
+-------------------------------------------------------------------------
+Offset:              4.574ns (Levels of Logic = 2)
+  Source:            eint/Q (LATCH)
+  Destination:       Encode<0> (PAD)
+  Source Clock:      eint/Q_G falling
+
+  Data Path: eint/Q to Encode<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               4   0.498   0.684  eint/Q (eint/Q)
+     LUT3:I2->O            2   0.205   0.616  Encode<0>_MLTSRCEDGELogicTrst1 (Encode<0>_MLTSRCEDGE)
+     OBUFT:I->O                2.571          Encode_0_OBUFT (Encode<0>)
+    ----------------------------------------
+    Total                      4.574ns (3.274ns logic, 1.300ns route)
+                                       (71.6% logic, 28.4% route)
 
 =========================================================================
 
@@ -462,17 +555,34 @@ Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 CLK            |    1.334|         |         |         |
 ---------------+---------+---------+---------+---------+
 
+Clock to Setup on destination clock eint/Q_G
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+int/Q_G        |         |         |    1.357|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock int/Q_G
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK            |         |         |    2.765|         |
+eint/Q_G       |         |         |    2.710|         |
+---------------+---------+---------+---------+---------+
+
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.19 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.71 secs
  
 --> 
 
-Total memory usage is 251252 kilobytes
+Total memory usage is 252020 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    5 (   0 filtered)
-Number of infos    :    2 (   0 filtered)
+Number of warnings :    9 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
 

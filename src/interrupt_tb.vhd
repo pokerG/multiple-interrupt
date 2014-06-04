@@ -33,7 +33,7 @@ USE ieee.std_logic_1164.ALL;
 --USE ieee.numeric_std.ALL;
  
 ENTITY interrupt_tb IS
-END interrupt_tb;
+END interrupt_tb; 
  
 ARCHITECTURE behavior OF interrupt_tb IS 
  
@@ -41,7 +41,7 @@ ARCHITECTURE behavior OF interrupt_tb IS
  
     COMPONENT interrupt
     PORT(
-         INTA : IN  std_logic;
+         OpInt : IN  std_logic;
          CLK : IN  std_logic;
          D : IN  std_logic_vector(1 to 4);
          M : IN  std_logic_vector(1 to 4);
@@ -49,10 +49,10 @@ ARCHITECTURE behavior OF interrupt_tb IS
          Encode : OUT  std_logic_vector(0 to 1)
         );
     END COMPONENT;
-    
-
+      
+ 
    --Inputs
-   signal INTA : std_logic := '1';
+   signal OpInt : std_logic := '0';
    signal CLK : std_logic := '0';
    signal D : std_logic_vector(1 to 4) := "1111";
    signal M : std_logic_vector(1 to 4) := "0000";
@@ -75,7 +75,7 @@ BEGIN
 
 	-- Instantiate the Unit Under Test (UUT)
    uut: interrupt PORT MAP (
-          INTA => INTA,
+          OpInt => OpInt,
           CLK => CLK,
           D => D,
           M => M,
@@ -94,11 +94,11 @@ BEGIN
  
 	process
 	begin
-		wait for 5 ns;
+		wait for 100 ns;
+		OpInt <= '1';
 		tmp4 <= '0';
 		--wait until INTR = '1';
 		if INTR = '1' then
-		INTA <= '0';
 		tmpm <= M; --±£´æÆÁ±Î×Ö
 		case Encode is
 			when "00" =>
@@ -116,11 +116,12 @@ BEGIN
 			when others =>
 				tmp3 <= '1' after 5 ns;
 		end case;
-		INTA <= '1';
+		wait for 50 ns;
+		OpInt <= '0';
 		wait for 100 ns; --ÖÐ¶Ï·þÎñ
-		INTA <= '0';
+		OpInt <= '1';
 		M <= tmpm after 10 ns;	--»Ö¸´ÆÁ±Î×Ö
-		INTA <= '1';
+		OpInt <= '0';
 		tmp3 <= '0' after 10 ns;
 		end if;
 		tmp4 <= '1';
